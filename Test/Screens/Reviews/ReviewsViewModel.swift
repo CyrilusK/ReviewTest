@@ -52,6 +52,11 @@ private extension ReviewsViewModel {
             state.items += reviews.items.map(makeReviewItem)
             state.offset += state.limit
             state.shouldLoad = state.offset < reviews.count
+            
+            if state.offset >= reviews.count {
+                let totalCountReviewsConfig = makeTotalCountReviewsItem(reviews.count)
+                state.items.append(totalCountReviewsConfig)
+            }
         } catch {
             state.shouldLoad = true
         }
@@ -95,6 +100,11 @@ private extension ReviewsViewModel {
         return item
     }
 
+    func makeTotalCountReviewsItem(_ count: Int) -> TotalCountReviewsCellConfig {
+        let countText = "\(count) отзывов ".attributed(font: .reviewCount, color: .reviewCount)
+        let config = TotalCountReviewsCellConfig(totalText: countText)
+        return config
+    }
 }
 
 // MARK: - UITableViewDataSource

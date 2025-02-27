@@ -17,7 +17,6 @@ final class ReviewsView: UIView {
         super.layoutSubviews()
         tableView.frame = bounds.inset(by: safeAreaInsets)
     }
-
 }
 
 // MARK: - Private
@@ -34,6 +33,7 @@ private extension ReviewsView {
         tableView.separatorStyle = .none
         tableView.allowsSelection = false
         tableView.register(ReviewCell.self, forCellReuseIdentifier: ReviewCellConfig.reuseId)
+        tableView.register(TotalCountReviewsCell.self, forCellReuseIdentifier: TotalCountReviewsCellConfig.reuseId)
     }
 
 }

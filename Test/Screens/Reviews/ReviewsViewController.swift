@@ -24,7 +24,6 @@ final class ReviewsViewController: UIViewController {
         setupViewModel()
         viewModel.getReviews()
     }
-
 }
 
 // MARK: - Private
@@ -43,5 +42,4 @@ private extension ReviewsViewController {
             reviewsView?.tableView.reloadData()
         }
     }
-
 }

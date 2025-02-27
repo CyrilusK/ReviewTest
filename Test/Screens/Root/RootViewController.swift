@@ -7,7 +7,6 @@ final class RootViewController: UIViewController {
     override func loadView() {
         view = rootView
     }
-
 }
 
 // MARK: - Private

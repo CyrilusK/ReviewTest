@@ -192,7 +192,7 @@ private final class ReviewCellLayout {
 
     /// Возвращает высоту ячейку с данной конфигурацией `config` и ограничением по ширине `maxWidth`.
     func height(config: Config, maxWidth: CGFloat) -> CGFloat {
-        let width = maxWidth - insets.left - insets.right - Layout.avatarSize.width - avatarToUsernameSpacing
+        let width = maxWidth - insets.left - insets.right - Self.avatarSize.width - avatarToUsernameSpacing
 
         var maxY = insets.top
         var showShowMoreButton = false
