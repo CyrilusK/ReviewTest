@@ -17,7 +17,7 @@ struct ReviewCellConfig {
     /// Текст отзыва.
     let reviewText: NSAttributedString
     /// Максимальное отображаемое количество строк текста. По умолчанию 3.
-    var maxLines = 0
+    var maxLines = 3
     /// Время создания отзыва.
     let created: NSAttributedString
     /// Замыкание, вызываемое при нажатии на кнопку "Показать полностью...".
@@ -96,6 +96,9 @@ final class ReviewCell: UITableViewCell {
         showMoreButton.frame = layout.showMoreButtonFrame
     }
 
+    deinit {
+        print("[DEBUG] \(Self.self) deinit")
+    }
 }
 
 // MARK: - Private
@@ -221,7 +224,7 @@ private final class ReviewCellLayout {
             // Максимально возможная высота текста, если бы ограничения не было.
             let actualTextHeight = config.reviewText.boundingRect(width: width).size.height
             // Показываем кнопку "Показать полностью...", если максимально возможная высота текста больше текущей.
-            //showShowMoreButton = config.maxLines != .zero && actualTextHeight > currentTextHeight
+            showShowMoreButton = config.maxLines != .zero && actualTextHeight > currentTextHeight
 
             reviewTextLabelFrame = CGRect(
                 origin: CGPoint(x: avatarRightX, y: maxY),
@@ -230,15 +233,15 @@ private final class ReviewCellLayout {
             maxY = reviewTextLabelFrame.maxY + reviewTextToCreatedSpacing
         }
 
-//        if showShowMoreButton {
-//            showMoreButtonFrame = CGRect(
-//                origin: CGPoint(x: avatarRightX, y: maxY),
-//                size: Self.showMoreButtonSize
-//            )
-//            maxY = showMoreButtonFrame.maxY + showMoreToCreatedSpacing
-//        } else {
-//            showMoreButtonFrame = .zero
-//        }
+        if showShowMoreButton {
+            showMoreButtonFrame = CGRect(
+                origin: CGPoint(x: avatarRightX, y: maxY),
+                size: Self.showMoreButtonSize
+            )
+            maxY = showMoreButtonFrame.maxY + showMoreToCreatedSpacing
+        } else {
+            showMoreButtonFrame = .zero
+        }
 
         createdLabelFrame = CGRect(
             origin: CGPoint(x: avatarRightX, y: maxY),

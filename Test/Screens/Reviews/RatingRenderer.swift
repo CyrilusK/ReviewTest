@@ -48,6 +48,10 @@ final class RatingRenderer {
         self.images = images
         self.imageRenderer = imageRenderer
     }
+    
+    deinit {
+        print("[DEBUG] \(Self.self) deinit")
+    }
 }
 
 // MARK: - Internal

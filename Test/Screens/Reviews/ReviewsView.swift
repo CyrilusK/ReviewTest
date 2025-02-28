@@ -17,6 +17,10 @@ final class ReviewsView: UIView {
         super.layoutSubviews()
         tableView.frame = bounds.inset(by: safeAreaInsets)
     }
+    
+    deinit {
+        print("[DEBUG] \(Self.self) deinit")
+    }
 }
 
 // MARK: - Private

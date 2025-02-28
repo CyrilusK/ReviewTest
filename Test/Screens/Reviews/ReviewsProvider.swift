@@ -9,6 +9,9 @@ final class ReviewsProvider {
         self.bundle = bundle
     }
 
+    deinit {
+        print("[DEBUG] \(Self.self) deinit")
+    }
 }
 
 // MARK: - Internal

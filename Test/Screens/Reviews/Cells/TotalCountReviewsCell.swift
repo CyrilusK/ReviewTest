@@ -50,6 +50,10 @@ final class TotalCountReviewsCell: UITableViewCell {
         guard let layout = config?.layout else { return }
         totalLabel.frame = layout.totalLabelFrame
     }
+    
+    deinit {
+        print("[DEBUG] \(Self.self) deinit")
+    }
 }
     
 // MARK: - Private
