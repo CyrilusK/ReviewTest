@@ -4,6 +4,7 @@ final class ReviewsViewController: UIViewController {
 
     private lazy var reviewsView = makeReviewsView()
     private let refreshControl = UIRefreshControl()
+    private let activityIndicator = UIActivityIndicatorView(style: .medium)
     private let viewModel: ReviewsViewModel
 
     init(viewModel: ReviewsViewModel) {
@@ -22,6 +23,7 @@ final class ReviewsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupActivityIndicator()
         setupViewModel()
         viewModel.getReviews()
         setupRefreshControl()
@@ -43,10 +45,26 @@ private extension ReviewsViewController {
         reviewsView.tableView.refreshControl = refreshControl
         return reviewsView
     }
+    
+    func setupActivityIndicator() {
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        reviewsView.addSubview(activityIndicator)
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: reviewsView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: reviewsView.centerYAnchor)
+        ])
+    }
 
     func setupViewModel() {
-        viewModel.onStateChange = { [weak reviewsView] _ in
-            reviewsView?.tableView.reloadData()
+        viewModel.onStateChange = { [weak self] state in
+            guard let self else { return }
+            state.isLoading ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
+            if !state.isRefreshing {
+                reviewsView.tableView.refreshControl?.endRefreshing()
+            }
+            reviewsView.tableView.reloadData()
         }
     }
     
@@ -56,6 +74,5 @@ private extension ReviewsViewController {
     
     @objc func refresh() {
         viewModel.refreshReviews()
-        reviewsView.tableView.refreshControl?.endRefreshing()
     }
 }
