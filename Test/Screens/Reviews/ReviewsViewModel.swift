@@ -9,17 +9,20 @@ final class ReviewsViewModel: NSObject {
     private var state: State
     private let reviewsProvider: ReviewsProvider
     private let ratingRenderer: RatingRenderer
+    private let imageLoader: ImageLoader
     private let decoder: JSONDecoder
 
     init(
         state: State = State(),
         reviewsProvider: ReviewsProvider = ReviewsProvider(),
         ratingRenderer: RatingRenderer = RatingRenderer(),
+        imageLoader: ImageLoader = ImageLoader(),
         decoder: JSONDecoder = JSONDecoder()
     ) {
         self.state = state
         self.reviewsProvider = reviewsProvider
         self.ratingRenderer = ratingRenderer
+        self.imageLoader = imageLoader
         self.decoder = decoder
     }
 
@@ -109,16 +112,27 @@ private extension ReviewsViewModel {
         let ratingImage = ratingRenderer.ratingImage(review.rating)
         let reviewText = review.text.attributed(font: .text)
         let created = review.created.attributed(font: .created, color: .created)
-        let item = ReviewItem(
+        
+        var item = ReviewItem(
             avatarImage: avatarImage,
             userName: userName,
             ratingImage: ratingImage,
             reviewText: reviewText,
             created: created,
+            photos: [],
             onTapShowMore: { [weak self] id in
                 self?.showMoreReview(with: id)
             }
         )
+        
+        imageLoader.loadImages(from: review.photo_urls) { [weak self] images in
+            guard let self else { return }
+            item.photos = images
+            if let index = state.items.firstIndex(where: { ($0 as? ReviewItem)?.id == item.id }) {
+                state.items[index] = item
+                onStateChange?(state)
+            }
+        }
         return item
     }
 
@@ -176,5 +190,4 @@ extension ReviewsViewModel: UITableViewDelegate {
         let remainingDistance = contentHeight - viewHeight - targetOffsetY
         return remainingDistance <= triggerDistance
     }
-
 }

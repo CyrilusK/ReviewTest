@@ -28,6 +28,7 @@
 		21ED1F622D69CBCD0012D6F6 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ED1F612D69CBCD0012D6F6 /* RootView.swift */; };
 		21ED1F652D69D0340012D6F6 /* ReviewsScreenFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ED1F642D69D0340012D6F6 /* ReviewsScreenFactory.swift */; };
 		A566B51A2D7103CC006CE0EE /* TotalCountReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A566B5192D7103CC006CE0EE /* TotalCountReviewsCell.swift */; };
+		A5716D4B2D734DDD00677EEE /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5716D4A2D734DDD00677EEE /* ImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		21ED1F612D69CBCD0012D6F6 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		21ED1F642D69D0340012D6F6 /* ReviewsScreenFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsScreenFactory.swift; sourceTree = "<group>"; };
 		A566B5192D7103CC006CE0EE /* TotalCountReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalCountReviewsCell.swift; sourceTree = "<group>"; };
+		A5716D4A2D734DDD00677EEE /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				21B82E332D47B0AA0085DAA2 /* ReviewsViewModel.swift */,
 				21B82E352D47B0D80085DAA2 /* ReviewsProvider.swift */,
 				21667B7F2D4A25B2009AAA76 /* RatingRenderer.swift */,
+				A5716D4A2D734DDD00677EEE /* ImageLoader.swift */,
 				216668752D48F39E009AAA76 /* Cells */,
 			);
 			path = Reviews;
@@ -265,6 +268,7 @@
 			files = (
 				21B82E392D47B1320085DAA2 /* Review.swift in Sources */,
 				21B8416D2D47C0E20085DAA2 /* ReviewsViewModelState.swift in Sources */,
+				A5716D4B2D734DDD00677EEE /* ImageLoader.swift in Sources */,
 				21B82E2E2D47B0640085DAA2 /* ReviewCell.swift in Sources */,
 				21ED1F622D69CBCD0012D6F6 /* RootView.swift in Sources */,
 				21667B802D4A25B2009AAA76 /* RatingRenderer.swift in Sources */,
@@ -295,6 +299,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BMA5QWL5H6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -306,7 +311,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pgc6240.Test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kkg.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -325,6 +330,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BMA5QWL5H6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -336,7 +342,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.pgc6240.Test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kkg.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
