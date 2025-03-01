@@ -3,6 +3,7 @@ import UIKit
 final class ReviewsViewController: UIViewController {
 
     private lazy var reviewsView = makeReviewsView()
+    private let refreshControl = UIRefreshControl()
     private let viewModel: ReviewsViewModel
 
     init(viewModel: ReviewsViewModel) {
@@ -23,6 +24,7 @@ final class ReviewsViewController: UIViewController {
         super.viewDidLoad()
         setupViewModel()
         viewModel.getReviews()
+        setupRefreshControl()
     }
     
     deinit {
@@ -38,6 +40,7 @@ private extension ReviewsViewController {
         let reviewsView = ReviewsView()
         reviewsView.tableView.delegate = viewModel
         reviewsView.tableView.dataSource = viewModel
+        reviewsView.tableView.refreshControl = refreshControl
         return reviewsView
     }
 
@@ -45,5 +48,14 @@ private extension ReviewsViewController {
         viewModel.onStateChange = { [weak reviewsView] _ in
             reviewsView?.tableView.reloadData()
         }
+    }
+    
+    func setupRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
+    @objc func refresh() {
+        viewModel.refreshReviews()
+        reviewsView.tableView.refreshControl?.endRefreshing()
     }
 }

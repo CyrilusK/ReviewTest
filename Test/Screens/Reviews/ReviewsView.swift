@@ -39,5 +39,4 @@ private extension ReviewsView {
         tableView.register(ReviewCell.self, forCellReuseIdentifier: ReviewCellConfig.reuseId)
         tableView.register(TotalCountReviewsCell.self, forCellReuseIdentifier: TotalCountReviewsCellConfig.reuseId)
     }
-
 }

@@ -41,9 +41,15 @@ extension ReviewsViewModel {
         reviewsProvider.getReviews(offset: state.offset) { [weak self] result in
             self?.gotReviews(result)
         }
-
     }
 
+    func refreshReviews() {
+        state.items.removeAll()
+        state.offset = 0
+        state.shouldLoad = true
+        onStateChange?(state)
+        getReviews()
+    }
 }
 
 // MARK: - Private

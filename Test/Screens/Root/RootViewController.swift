@@ -19,5 +19,4 @@ private extension RootViewController {
         let controller = factory.makeReviewsController()
         navigationController?.pushViewController(controller, animated: true)
     }
-
 }
