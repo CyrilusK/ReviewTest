@@ -40,15 +40,16 @@ final class ImageLoader {
             group.enter()
             self.loadImage(from: urlString) { image in
                 images[index] = image
-                DispatchQueue.main.async {
-                    completion(images.compactMap { $0 })
-                }
                 group.leave()
             }
         }
         group.notify(queue: .main) {
             completion(images.compactMap { $0 })
         }
+    }
+    
+    deinit {
+        print("[DEBUG] \(Self.self) deinit")
     }
 }
 

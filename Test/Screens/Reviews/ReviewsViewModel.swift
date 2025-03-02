@@ -78,6 +78,7 @@ private extension ReviewsViewModel {
                 state.items.append(totalCountReviewsConfig)
             }
         } catch {
+            print("[DEBUG] Ошибка загрузки данных: \(error)")
             state.shouldLoad = true
             state.isLoading = false
         }
