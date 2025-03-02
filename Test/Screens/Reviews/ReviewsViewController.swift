@@ -53,7 +53,7 @@ private extension ReviewsViewController {
         
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: reviewsView.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: reviewsView.centerYAnchor)
+            activityIndicator.centerYAnchor.constraint(equalTo: reviewsView.centerYAnchor),
         ])
     }
 
@@ -72,7 +72,8 @@ private extension ReviewsViewController {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
     
-    @objc func refresh() {
+    @objc
+    func refresh() {
         viewModel.refreshReviews()
     }
 }
